@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Кафе «Терраса» — живая авторская кухня, уютная атмосфера, сезонные продукты. Завтраки, обеды, ужины. Бронирование столика онлайн.">
+<title>Кафе «Терраса» — Живая кухня, тёплая атмосфера</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EFE0;
+    --warm: #E8D5B0;
+    --brown: #3B2A1A;
+    --amber: #C8873A;
+    --dark: #1C1409;
+    --muted: #7A6550;
+    --light: #FBF7F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--light);
+    color: var(--brown);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 60px;
+    background: rgba(251,247,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,135,58,0.15);
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--brown);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .logo span { color: var(--amber); font-style: italic; }
+
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav ul a:hover { color: var(--amber); }
+
+  .nav-btn {
+    background: var(--amber);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.05em;
+  }
+  .nav-btn:hover { background: var(--brown); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    animation: fadeLeft 1s ease 0.2s both;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(200,135,58,0.12);
+    color: var(--amber);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    background: var(--brown);
+    color: var(--cream);
+    border: none;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.05em;
+  }
+  .btn-primary:hover { background: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,135,58,0.35); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--brown);
+    border: 1.5px solid rgba(59,42,26,0.25);
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+  .hero-stats {
+    display: flex; gap: 40px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(59,42,26,0.1);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--amber);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  /* HERO RIGHT */
+  .hero-right {
+    position: relative;
+    background: var(--brown);
+    overflow: hidden;
+    animation: fadeRight 1s ease 0.3s both;
+  }
+
+  .hero-img-bg {
+    width: 100%; height: 100%;
+    background:
+      linear-gradient(135deg, rgba(200,135,58,0.6) 0%, rgba(59,42,26,0.85) 60%),
+      url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80') center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px;
+  }
+
+  .hero-card {
+    background: rgba(251,247,240,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 28px;
+    color: white;
+    max-width: 320px;
+  }
+
+  .hero-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .hero-card p { font-size: 0.85rem; opacity: 0.8; line-height: 1.6; }
+
+  /* ИСПРАВЛЕНИЕ: бейдж — крутится только псевдоэлемент, текст остаётся статичным */
+  .floating-badge {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 90px; height: 90px;
+  }
+
+  .floating-badge-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--amber);
+    animation: spin 8s linear infinite;
+    border: 2px dashed rgba(255,255,255,0.4);
+  }
+
+  .floating-badge-content {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--amber);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .floating-badge-content .big { font-size: 1.6rem; font-weight: 600; line-height: 1; }
+  .floating-badge-content .small { font-size: 0.6rem; letter-spacing: 0.1em; opacity: 0.9; }
+
+  /* ABOUT */
+  .about {
+    padding: 120px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    background: var(--cream);
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 16px;
+  }
+
+  .about h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+
+  .about p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .about-img {
+    position: relative;
+  }
+
+  .about-img-main {
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    background:
+      linear-gradient(160deg, rgba(200,135,58,0.7) 0%, rgba(59,42,26,0.9) 100%),
+      url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80') center/cover;
+    background-blend-mode: multiply;
+  }
+
+  .about-img-overlay {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 16px;
+    background: var(--amber);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    box-shadow: 0 20px 60px rgba(200,135,58,0.4);
+  }
+  .about-img-overlay .num { font-size: 3rem; font-weight: 600; line-height: 1; }
+  .about-img-overlay .txt { font-size: 0.85rem; text-align: center; font-style: italic; padding: 0 16px; }
+
+  /* MENU */
+  .menu {
+    padding: 120px 80px;
+    background: var(--light);
+  }
+
+  .menu-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .menu-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+
+  .menu-header p {
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .menu-tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    padding: 10px 24px;
+    border-radius: 25px;
+    border: 1.5px solid rgba(59,42,26,0.15);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .tab.active, .tab:hover {
+    background: var(--brown);
+    color: var(--cream);
+    border-color: var(--brown);
+  }
+
+  /* Контент табов — скрываем неактивные */
+  .menu-content { display: none; }
+  .menu-content.active { display: grid; }
+
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .menu-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s;
+    border: 1px solid rgba(59,42,26,0.07);
+  }
+  .menu-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(59,42,26,0.12); }
+
+  .menu-card-img {
+    height: 200px;
+    background: linear-gradient(135deg, var(--warm), var(--amber));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+
+  .menu-card-body { padding: 24px; }
+
+  .menu-card-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .menu-card-body p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .menu-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--amber);
+  }
+
+  .order-btn {
+    background: rgba(200,135,58,0.1);
+    color: var(--amber);
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .order-btn:hover { background: var(--amber); color: white; }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    padding: 100px 80px;
+    background: var(--brown);
+    color: white;
+    text-align: center;
+  }
+
+  .testimonials .section-tag { color: var(--amber); }
+
+  .testimonials h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300;
+    margin-bottom: 60px;
+    color: var(--cream);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .review-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 32px;
+    text-align: left;
+    transition: all 0.3s;
+  }
+  .review-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+
+  .stars { color: var(--amber); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+
+  .review-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(245,239,224,0.8);
+    font-weight: 300;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .reviewer-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .reviewer-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cream);
+  }
+  .reviewer-sub {
+    font-size: 0.75rem;
+    color: rgba(245,239,224,0.5);
+  }
+
+  /* BOOKING */
+  .booking {
+    padding: 120px 80px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .booking h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  .booking > div > p {
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--brown);
+    font-weight: 400;
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: rgba(200,135,58,0.12);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .booking-form {
+    background: white;
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: 0 20px 80px rgba(59,42,26,0.1);
+  }
+
+  .booking-form h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 32px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid rgba(59,42,26,0.12);
+    border-radius: 12px;
+    background: var(--light);
+    color: var(--brown);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus {
+    border-color: var(--amber);
+  }
+
+  /* ИСПРАВЛЕНИЕ: убираем перезагрузку страницы при клике на кнопку отправки */
+  .form-submit {
+    width: 100%;
+    background: var(--brown);
+    color: var(--cream);
+    border: none;
+    padding: 16px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+    type: button;
+  }
+  .form-submit:hover { background: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,135,58,0.35); }
+
+  /* Уведомление об успешной отправке */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background: rgba(200,135,58,0.1);
+    border-radius: 16px;
+    color: var(--amber);
+    font-weight: 600;
+    margin-top: 16px;
+    font-size: 0.95rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(245,239,224,0.6);
+    padding: 60px 80px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--cream);
+  }
+  .footer-logo span { color: var(--amber); font-style: italic; }
+  .footer-logo p {
+    font-size: 0.8rem;
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  .footer-links h4 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(245,239,224,0.55);
+    font-size: 0.9rem;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+  .footer-links a:hover { color: var(--amber); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 50vh; }
+    .hero-left { padding: 60px 24px; }
+    .about, .booking { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+    .menu { padding: 60px 24px; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .testimonials { padding: 60px 24px; }
+    footer { padding: 40px 24px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; }
+    .about-img-overlay { display: none; }
+    .booking-form { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Терра<span>са</span></a>
+  <ul>
+    <li><a href="#about">О нас</a></li>
+    <li><a href="#menu">Меню</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#booking">Контакты</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Забронировать стол</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">✦ Открыто с 8:00 до 23:00</div>
+    <h1>Место, где<br>каждый обед<br>— это <em>история</em></h1>
+    <p>Живая авторская кухня, уютная атмосфера и тёплый сервис. Мы готовим из сезонных продуктов — каждый день по-новому.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Смотреть меню</button>
+      <button class="btn-ghost" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Забронировать стол</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Рейтинг на картах</div>
+      </div>
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Довольных гостей</div>
+      </div>
+      <div>
+        <div class="stat-num">7 лет</div>
+        <div class="stat-label">В центре города</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-bg">
+      <!-- ИСПРАВЛЕНИЕ: бейдж разделён на фоновое кольцо (крутится) и текст (статичный) -->
+      <div class="floating-badge">
+        <div class="floating-badge-ring"></div>
+        <div class="floating-badge-content">
+          <div class="big">NEW</div>
+          <div class="small">МЕНЮ</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Блюдо дня</div>
+        <p>Паста с белыми грибами и трюфельным маслом — только сегодня 490 ₽ вместо 690 ₽</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img">
+    <div class="about-img-main"></div>
+    <div class="about-img-overlay">
+      <div class="num">100%</div>
+      <div class="txt">живые продукты</div>
+    </div>
+  </div>
+  <div>
+    <div class="section-tag">✦ Наша история</div>
+    <h2>Готовим с душой<br>с 2017 года</h2>
+    <p>Кафе «Терраса» — это семейное место, где каждый рецепт рождался на кухне, а не в офисе. Мы верим, что хорошая еда начинается с честных продуктов.</p>
+    <p>Наш шеф-повар Алексей работает только с местными фермерами. Меню меняется каждый сезон — зимой согревающие блюда, летом лёгкие и свежие.</p>
+    <p>Приходите одни, с семьёй или друзьями — у нас найдётся место для каждого.</p>
+    <br>
+    <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Забронировать столик</button>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="menu-header">
+    <div class="section-tag">✦ Что у нас есть</div>
+    <h2>Популярные блюда</h2>
+    <p>Готовим каждый день свежее. Спросите официанта о блюде дня — оно всегда особенное.</p>
+  </div>
+  <div class="menu-tabs">
+    <button class="tab active" data-tab="breakfast">Завтраки</button>
+    <button class="tab" data-tab="main">Основные</button>
+    <button class="tab" data-tab="desserts">Десерты</button>
+    <button class="tab" data-tab="drinks">Напитки</button>
+  </div>
+
+  <!-- ИСПРАВЛЕНИЕ: табы теперь реально переключают контент -->
+  <div class="menu-content menu-grid active" data-content="breakfast">
+    <div class="menu-card">
+      <div class="menu-card-img">🥞</div>
+      <div class="menu-card-body">
+        <h3>Пышные панкейки</h3>
+        <p>С натуральным мёдом, свежими ягодами и домашними сливками</p>
+        <div class="menu-card-footer">
+          <div class="price">320 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍳</div>
+      <div class="menu-card-body">
+        <h3>Яйца Бенедикт</h3>
+        <p>Яйца пашот, ветчина, голландский соус и поджаренный бриошь</p>
+        <div class="menu-card-footer">
+          <div class="price">390 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">☕</div>
+      <div class="menu-card-body">
+        <h3>Авторский капучино</h3>
+        <p>Обжарка собственной смеси, молоко от местной фермы, латте-арт</p>
+        <div class="menu-card-footer">
+          <div class="price">210 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-content menu-grid" data-content="main">
+    <div class="menu-card">
+      <div class="menu-card-img">🍝</div>
+      <div class="menu-card-body">
+        <h3>Паста с трюфелем</h3>
+        <p>Белые грибы, трюфельное масло, пармезан, свежая паста ручной работы</p>
+        <div class="menu-card-footer">
+          <div class="price">690 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🥩</div>
+      <div class="menu-card-body">
+        <h3>Говядина sous vide</h3>
+        <p>Томлёная 12 часов, с овощным пюре и соусом из красного вина</p>
+        <div class="menu-card-footer">
+          <div class="price">890 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🥗</div>
+      <div class="menu-card-body">
+        <h3>Сезонный салат</h3>
+        <p>Микс листьев, козий сыр, грецкие орехи и малиновая заправка</p>
+        <div class="menu-card-footer">
+          <div class="price">420 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-content menu-grid" data-content="desserts">
+    <div class="menu-card">
+      <div class="menu-card-img">🍮</div>
+      <div class="menu-card-body">
+        <h3>Крем-брюле</h3>
+        <p>Классический французский десерт с хрустящей карамельной корочкой</p>
+        <div class="menu-card-footer">
+          <div class="price">280 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍰</div>
+      <div class="menu-card-body">
+        <h3>Тирамису</h3>
+        <p>По-домашнему — с настоящим маскарпоне и свежезаваренным эспрессо</p>
+        <div class="menu-card-footer">
+          <div class="price">320 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍓</div>
+      <div class="menu-card-body">
+        <h3>Сорбет из ягод</h3>
+        <p>Сезонные ягоды, без добавок и красителей — только натуральное</p>
+        <div class="menu-card-footer">
+          <div class="price">240 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-content menu-grid" data-content="drinks">
+    <div class="menu-card">
+      <div class="menu-card-img">☕</div>
+      <div class="menu-card-body">
+        <h3>Авторский латте</h3>
+        <p>Двойной эспрессо, вспененное фермерское молоко, рисунок на пенке</p>
+        <div class="menu-card-footer">
+          <div class="price">230 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🍹</div>
+      <div class="menu-card-body">
+        <h3>Лимонад домашний</h3>
+        <p>Свежевыжатые цитрусы, мята, газированная вода и тростниковый сахар</p>
+        <div class="menu-card-footer">
+          <div class="price">190 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img">🫖</div>
+      <div class="menu-card-body">
+        <h3>Чай травяной</h3>
+        <p>Авторский купаж из чабреца, мелиссы и ромашки — из собственного сада</p>
+        <div class="menu-card-footer">
+          <div class="price">160 ₽</div>
+          <button class="order-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-tag">✦ Что говорят гости</div>
+  <h2>Отзывы реальных людей</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">«Приходим каждые выходные уже год. Лучший завтрак в городе — это факт. Панкейки просто нереальные!»</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">А</div>
+        <div>
+          <div class="reviewer-name">Анна Смирнова</div>
+          <div class="reviewer-sub">Постоянный гость</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">«Отмечали день рождения — персонал сделал всё идеально. Атмосфера уютная, кухня вкусная. Рекомендую!»</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">М</div>
+        <div>
+          <div class="reviewer-name">Михаил Петров</div>
+          <div class="reviewer-sub">Гость на мероприятии</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">«Наконец-то кафе, где готовят из настоящих продуктов. Чувствуется каждый ингредиент. Буду возвращаться.»</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar">Е</div>
+        <div>
+          <div class="reviewer-name">Екатерина Лёвина</div>
+          <div class="reviewer-sub">Новый гость</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div>
+    <div class="section-tag">✦ Приходите к нам</div>
+    <h2>Забронируйте<br>столик заранее</h2>
+    <p>Мы рады гостям в любое время. Бронь по телефону, WhatsApp или прямо на сайте — как вам удобнее.</p>
+    <ul class="contact-list">
+      <li class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>ул. Центральная, 14, 1 этаж</div>
+      </li>
+      <li class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>+7 (900) 123-45-67</div>
+      </li>
+      <li class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>Ежедневно с 8:00 до 23:00</div>
+      </li>
+      <li class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div>@terrassa_cafe в ВКонтакте</div>
+      </li>
+    </ul>
+  </div>
+  <div class="booking-form">
+    <h3>Бронь столика</h3>
+    <!-- ИСПРАВЛЕНИЕ: убран <form>, чтобы не было перезагрузки страницы -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Ваше имя</label>
+        <input type="text" id="field-name" placeholder="Александр">
+      </div>
+      <div class="form-group">
+        <label>Телефон</label>
+        <input type="tel" id="field-phone" placeholder="+7 (900) 000-00-00">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Дата</label>
+        <input type="date" id="field-date">
+      </div>
+      <div class="form-group">
+        <label>Время</label>
+        <input type="time" id="field-time" value="19:00">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Количество гостей</label>
+      <select id="field-guests">
+        <option>1 человек</option>
+        <option>2 человека</option>
+        <option selected>3–4 человека</option>
+        <option>5–6 человек</option>
+        <option>7+ человек</option>
+      </select>
+    </div>
+    <button class="form-submit" type="button" onclick="handleBooking()">Забронировать стол →</button>
+    <div class="form-success" id="form-success">✓ Заявка принята! Мы свяжемся с вами в течение 15 минут.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      Терра<span>са</span>
+      <p>Живая кухня, тёплая атмосфера</p>
+    </div>
+    <div class="footer-links">
+      <h4>Меню</h4>
+      <ul>
+        <li><a href="#menu">Завтраки</a></li>
+        <li><a href="#menu">Обеды</a></li>
+        <li><a href="#menu">Ужины</a></li>
+        <li><a href="#menu">Десерты</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Информация</h4>
+      <ul>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#">Акции</a></li>
+        <li><a href="#booking">Банкеты</a></li>
+        <li><a href="#booking">Контакты</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Соцсети</h4>
+      <ul>
+        <li><a href="#">ВКонтакте</a></li>
+        <li><a href="#">Telegram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">2ГИС</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Кафе «Терраса». Все права защищены.</span>
+    <span>Сделано с ❤️ для наших гостей</span>
+  </div>
+</footer>
+
+<script>
+  // Переключение табов меню — теперь реально скрывает/показывает блюда
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      document.querySelectorAll('.menu-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.querySelector(`.menu-content[data-content="${target}"]`).classList.add('active');
+    });
+  });
+
+  // Scroll-анимации для карточек
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.menu-card, .review-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Обработка формы бронирования без перезагрузки страницы
+  function handleBooking() {
+    const name = document.getElementById('field-name').value.trim();
+    const phone = document.getElementById('field-phone').value.trim();
+    const date = document.getElementById('field-date').value;
+    const time = document.getElementById('field-time').value;
+
+    if (!name || !phone || !date || !time) {
+      alert('Пожалуйста, заполните все обязательные поля: имя, телефон, дата и время.');
+      return;
+    }
+
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Отправка...';
+    btn.disabled = true;
+
+    // Имитация отправки (здесь подключается реальный API/Telegram-бот и т.д.)
+    setTimeout(() => {
+      document.getElementById('form-success').style.display = 'block';
+      btn.style.display = 'none';
+    }, 800);
+  }
+</script>
+
+</body>
+</html>
